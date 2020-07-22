@@ -1,5 +1,6 @@
 package application;
 	
+
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.stage.Stage;
@@ -10,11 +11,11 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 
-
 public class Main extends Application {
 	int num1;
 	int num2;
 	int gameMoney=10000;
+	
 
 	@Override
 	public void start(Stage stage) {
@@ -30,7 +31,7 @@ public class Main extends Application {
 		
 			//6개가 번갈아 바뀌는 gif 파일을 따로 만들어서 roll 이름으로 지정함
 			Image roll = new Image("file:rolldice.gif");
-			
+
 			StackPane pane = new StackPane();
 			Scene scene = new Scene(pane,500,500);
 			
@@ -43,14 +44,14 @@ public class Main extends Application {
 			buttonEven.setText("짝수"); 
 			buttonRoll.setText("Roll"); 
 
-			buttonOdd.setStyle("-fx-font-size:30");//폰트 크기
-			buttonEven.setStyle("-fx-font-size:30");
+			buttonOdd.setStyle("-fx-font-size:30;-fx-background-color:pink");//폰트 크기
+			buttonEven.setStyle("-fx-font-size:30;-fx-background-color:green");
 			buttonRoll.setStyle("-fx-font-size:30");
 			
 			//처음 안내 텍스트 표시 
 			Label text = new Label();
-			text.setText("홀짝중 하나를 선택하세요");
-			text.setStyle("-fx-font-size:40;-fx-text-fill:blue;");	
+			text.setText("Roll을 누른 다음 홀짝  선택");
+			text.setStyle("-fx-font-size:35;-fx-text-fill:blue;");	
 			
 			//게임머니 표시
 			Label moneyText = new Label();
