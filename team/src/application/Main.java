@@ -1,6 +1,5 @@
 package application;
 	
-
 import java.io.File;
 import javafx.application.Application;
 import javafx.geometry.Pos;
@@ -17,8 +16,7 @@ import javafx.scene.media.MediaPlayer;
 public class Main extends Application {
 	int num1;
 	int num2;
-	int gameMoney=10000;
-	
+	int gameMoney=1000000;	
 
 	@Override
 	public void start(Stage stage) {
@@ -32,11 +30,13 @@ public class Main extends Application {
 				new Image("file:5.png"),
 				new Image("file:6.png")};
 		
-			//6개가 번갈아 바뀌는 gif 파일을 따로 만들어서 roll 이름으로 지정함
+			//6개가 번갈아 바뀌는 gif 파일을 따로 만듬
 			Image roll = new Image("file:rolldice.gif");
 			
+			//소리 효과 설정
 			MediaPlayer audio = new MediaPlayer(new Media(new File("Rolling_Dice.wav").toURI().toString()));
 			
+			//창 크기 : 500,500
 			StackPane pane = new StackPane();
 			Scene scene = new Scene(pane,500,500);
 			
@@ -49,7 +49,7 @@ public class Main extends Application {
 			buttonEven.setText("짝수"); 
 			buttonRoll.setText("Roll"); 
 
-			buttonOdd.setStyle("-fx-font-size:30;-fx-background-color:pink");//폰트 크기
+			buttonOdd.setStyle("-fx-font-size:30;-fx-background-color:pink");//폰트 크기,배경색
 			buttonEven.setStyle("-fx-font-size:30;-fx-background-color:green");
 			buttonRoll.setStyle("-fx-font-size:30");
 			
@@ -80,11 +80,11 @@ public class Main extends Application {
 								
 				if(sum%2==0) {//맞췄는지 판단
 					text.setText("You Loose");
-					gameMoney-=200;//게임머니 -
+					gameMoney-=50000;//게임머니 -
 				}
 				else {
 					text.setText("You Win");
-					gameMoney+=200;
+					gameMoney+=50000;
 				}	
 				iv1.setImage(images[num1-1]);//선택한 랜덤 숫자는 0~6이고, 이미지 배열은 0~5이므로 -1해줌
 	            iv2.setImage(images[num2-1]);	  
@@ -101,11 +101,11 @@ public class Main extends Application {
 								
 				if(sum%2==0) {
 					text.setText("You Win");
-					gameMoney+=200;
+					gameMoney+=50000;
 				}
 				else {
 					text.setText("You Loose");
-					gameMoney-=200;
+					gameMoney-=50000;
 				}	
 				iv1.setImage(images[num1-1]);
 	            iv2.setImage(images[num2-1]);	  
