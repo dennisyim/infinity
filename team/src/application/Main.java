@@ -1,6 +1,7 @@
 package application;
 	
 
+import java.io.File;
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.stage.Stage;
@@ -10,6 +11,8 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 
 public class Main extends Application {
 	int num1;
@@ -31,7 +34,9 @@ public class Main extends Application {
 		
 			//6개가 번갈아 바뀌는 gif 파일을 따로 만들어서 roll 이름으로 지정함
 			Image roll = new Image("file:rolldice.gif");
-
+			
+			MediaPlayer audio = new MediaPlayer(new Media(new File("Rolling_Dice.wav").toURI().toString()));
+			
 			StackPane pane = new StackPane();
 			Scene scene = new Scene(pane,500,500);
 			
@@ -67,6 +72,7 @@ public class Main extends Application {
  	
 			//홀수 버튼 눌렀을 때 판단
 			buttonOdd.setOnAction(e->{
+				audio.stop();;//소리 멈춘다
 				//1~6까지 랜덤값 2개 얻는다
 				num1 = (int)(Math.random()*6)+1;
 				num2 = (int)(Math.random()*6)+1;
@@ -88,6 +94,7 @@ public class Main extends Application {
 			
 			//짝수 버튼 눌렀을 때 판단
 			buttonEven.setOnAction(e->{
+				audio.stop();
 				num1 = (int)(Math.random()*6)+1;
 				num2 = (int)(Math.random()*6)+1;
 				int sum = num1 + num2;		
@@ -109,6 +116,7 @@ public class Main extends Application {
 			
 			//Roll 버튼 눌렀을 때
 			buttonRoll.setOnAction(e->{
+				audio.play();//소리 재생
 				iv1.setImage(roll);
 	            iv2.setImage(roll);	
 	            text.setText("홀짝중 하나를 선택하세요");
